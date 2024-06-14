@@ -1,6 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import Card from '../components/Card.astro';
+import Topheader from '../components/Nav.astro';
 ---
 
 <Layout title="Welcome to Astro.">
@@ -33,9 +34,7 @@ import Card from '../components/Card.astro';
 				</linearGradient>
 			</defs>
 		</svg>
-        <a href="/">首页</a>
-		<a href="/about/">关于我</a>
-		<a href="/background/">背景资料</a>
+		<Topheader />
 		<h1>Welcome to <span class="text-gradient">Astro</span></h1>
 		<h2>
 			开玩笑的啦
