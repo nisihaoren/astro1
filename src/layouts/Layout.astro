@@ -15,12 +15,28 @@ const { title } = Astro.props;
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="generator" content={Astro.generator} />
 		<title>{title}</title>
+		
 	</head>
 	<body>
+		<div class="banner">
+			<!-- 添加一个包裹元素用于导航栏 -->
+			<div class="logo">
+				<!-- Logo图片或SVG -->
+				<img src="src/images/logo.png" alt="Logo">
+			</div>
+			<div>
+			<nav class="nav-bar">
+				<a href="/" class="nav-link">首页</a>
+				<a href="/about/" class="nav-link">先点我！</a>
+				<a href="/background/" class="nav-link">背景资料 </a>
 		<slot />
 	</body>
+	<main>
+		
+	  </main>
 </html>
 <style is:global>
+	
 	:root {
 		--accent: 136, 58, 234;
 		--accent-light: 224, 204, 250;
@@ -32,11 +48,18 @@ const { title } = Astro.props;
 			white 60%
 		);
 	}
-	html {
-		font-family: system-ui, sans-serif;
-		background: #13151a;
-		background-size: 224px;
-	}
+	body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+  background-color: #ffffff;
+}
+head{
+	height: 50px; /* 或者你需要的高度 */
+    margin-top: 0;
+}
 	code {
 		font-family:
 			Menlo,
@@ -48,4 +71,73 @@ const { title } = Astro.props;
 			Courier New,
 			monospace;
 	}
+
+
+	.nav-bar {
+    position: absolute; /* 相对于最近的已定位（relative）祖先元素定位 */
+	margin: 0 auto;
+	width: 1000px;
+	height: 60px;
+    top: 0; /* 将导航栏放置在顶部 */
+    left: 0; /* 将导航栏放置在左侧 */
+    z-index: 10; /* 确保在背景图片上方 */
+    padding: 10px; /* 内边距 */
+}
+
+/* 导航链接样式 */
+.nav-link {
+    margin: 10px 10px; /* 导航链接之间的间距 */
+    color: #333; /* 文字颜色 */
+    text-decoration: none;
+	float: left;
+	width: 150px;
+}
+.nav-link:hover{
+	background-color: rgb(157, 190, 219);
+	box-shadow: 1px;}
+/* Banner样式 */
+.banner {
+    position: relative;
+    width: 100%;
+    height: 65vh; /* 可以根据需要调整高度 */
+	background-image: url(https://img-baofun.zhhainiao.com/fs/a2c93539c99f7cdfa04aecfc93d20a60.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.logo {
+    position: absolute;
+    top: 20px; /* 根据需要调整位置 */
+    right: 500px; /* 根据需要调整位置 */
+    width: auto; /* 或者设置logo的固定宽度 */
+    height: auto;
+}
+.logo:hover {
+    animation: rotateAnimation 1s forwards; /* 应用动画 */
+}
+
+@keyframes rotateAnimation {
+    to {
+        transform: rotate(360deg); /* 动画结束时旋转360度 */
+    }
+}
+main {
+  flex-grow: 1; /* 主内容区域占据剩余空间 */
+  padding: 20px; /* 一些内边距 */
+  box-sizing: border-box; /* 边框计算在宽度内 */
+}
+h1 {
+  margin-bottom: calc(20px + 2rem); /* 20px 加上2倍的根字体大小 */
+}
+
+h2 {
+  margin-top: 10rem; /* 或者其他固定值 */
+}
+
 </style>

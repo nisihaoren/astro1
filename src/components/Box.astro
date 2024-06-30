@@ -1,0 +1,22 @@
+---
+// Box.astro
+// 组件的脚本部分，可以用来定义属性或状态
+---
+
+<!-- 组件的模板部分 -->
+<div class="box">
+    <!-- 插槽允许用户传递内容到组件中 -->
+    <slot>默认内容</slot>
+    
+  </div>
+  
+  <style>
+    .box {
+      padding: 1rem;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      background-color: #fff;
+      /* 可以根据需要添加更多样式 */
+    }
+    
+  </style>
